@@ -6,12 +6,11 @@
 
 ::============================================================================
 ::
-::   IDM Activation Script (IAS)
+::   IDM Activation Script
 ::
-::   Homepages: https://github.com/lstprjct/IDM-Activation-Script
-::              https://t.me/ModByPiash/5
+::  
 ::
-::       Telegram: @Stripe_op
+::       Telegram: @chrismory_sr
 ::
 ::============================================================================
 
@@ -370,11 +369,11 @@ if not defined terminal mode 75, 28
 
 echo:
 echo:
-call :_color2 %_White% "             " %_Green% "Create By Piash"
+call :_color2 %_White% "             " %_Green% "Imetengenezwa na  chrismory_sr"
 echo:            ___________________________________________________ 
 echo:
-echo:               Telegram: @ModByPiash
-echo:               Github: https://github.com/lstprjct
+echo:               Telegram: @chrismory_sr
+echo:               Github: https://github.com/chrismory_sr
 echo:            ___________________________________________________ 
 echo:                                                               
 echo:               [1] Activate
@@ -387,7 +386,7 @@ echo:               [5] Help
 echo:               [0] Exit
 echo:            ___________________________________________________
 echo:         
-call :_color2 %_White% "             " %_Green% "Enter a menu option in the Keyboard [1,2,3,4,5,0]"
+call :_color2 %_White% "             " %_Green% "Jaza namba ya chaguo lako [1,2,3,4,5,0]"
 choice /C:123450 /N
 set _erl=%errorlevel%
 
@@ -504,9 +503,9 @@ if %frz%==0 if %_unattended%==0 (
 echo:
 echo %line%
 echo:
-echo      Activation is not working for some users and IDM may show fake serial nag screen.
+echo      Kwa watumiaji baadhi activation inaweza feli hivyo unashauriwa kutumia freeze trial option.
 echo:
-call :_color2 %_White% "     " %_Green% "Its recommended to use Freeze Trial option instead."
+call :_color2 %_White% "     " %_Green% "Kwa ushauri tumia freeze trial kama activation ikifeli."
 echo %line%
 echo:
 choice /C:19 /N /M ">    [1] Go Back [9] Activate : "
@@ -516,7 +515,7 @@ cls
 
 echo:
 if not exist "%IDMan%" (
-call :_color %Red% "IDM [Internet Download Manager] is not Installed."
+call :_color %Red% "IDM [Internet Download Manager] haijawa installed."
 echo You can download it from  https://www.internetdownloadmanager.com/download.html
 goto done
 )
@@ -528,10 +527,10 @@ for /f "delims=[] tokens=2" %%# in ('ping -n 1 internetdownloadmanager.com') do 
 
 if not defined _int (
 %psc% "$t = New-Object Net.Sockets.TcpClient;try{$t.Connect("""internetdownloadmanager.com""", 80)}catch{};$t.Connected" | findstr /i "true" %nul1% || (
-call :_color %Red% "Unable to connect internetdownloadmanager.com, aborting..."
+call :_color %Red% "server inashindwa ku connect internetdownloadmanager.com, inatoka..."
 goto done
 )
-call :_color %Gray% "Ping command failed for internetdownloadmanager.com"
+call :_color %Gray% "Ping command ina feli internetdownloadmanager.com"
 echo:
 )
 
@@ -575,13 +574,13 @@ echo:
 echo %line%
 echo:
 if %frz%==0 (
-call :_color %Green% "The IDM Activation process has been completed."
+call :_color %Green% "IDM imekuwa activated kikamilifu."
 echo:
-call :_color %Gray% "If the fake serial screen appears, use the Freeze Trial option instead."
+call :_color %Gray% "Ikitokea fake serial number screen basi tumia freeze trial period."
 ) else (
-call :_color %Green% "The IDM 30 days trial period is successfully freezed for Lifetime."
+call :_color %Green% "IDM imegandishwa kwa lifetime access."
 echo:
-call :_color %Gray% "If IDM is showing a popup to register, reinstall IDM."
+call :_color %Gray% "ikitokea ina pop up kusajiri basi unistall na uinstall upya kisha activate."
 )
 
 ::========================================================================================================================================
@@ -594,10 +593,10 @@ echo:
 if %_unattended%==1 timeout /t 2 & exit /b
 
 if defined terminal (
-call :_color %_Yellow% "Press 0 key to return..."
+call :_color %_Yellow% "Bonyeza 0 kurudi..."
 choice /c 0 /n
 ) else (
-call :_color %_Yellow% "Press any key to return..."
+call :_color %_Yellow% "Bonyeza button yoyote kurudi..."
 pause %nul1%
 )
 goto MainMenu
@@ -626,7 +625,7 @@ exit /b
 :register_IDM
 
 echo:
-echo Applying registration details...
+echo Inasajiri...
 echo:
 
 set /a fname = %random% %% 9999 + 1000
@@ -651,7 +650,7 @@ exit /b
 :download_files
 
 echo:
-echo Triggering a few downloads to create certain registry keys, please wait...
+echo Inajaribu ku download kama usajiri unafanikiwa...
 echo:
 
 set "file=%SystemRoot%\Temp\temp.png"
@@ -689,7 +688,7 @@ goto :Check_file
 :add_key
 
 echo:
-echo Adding registry key...
+echo ina inject registry key...
 echo:
 
 set "reg="%HKLM%" /v "AdvIntDriverEnabled2""
@@ -725,7 +724,7 @@ foreach ($regPath in $regPaths) {
     }
 	
 	Write-Host
-	Write-Host "Searching IDM CLSID Registry Keys in $regPath"
+	Write-Host "Ina search IDM CLSID Registry Keys in $regPath"
 	Write-Host
 	
     $subKeys = Get-ChildItem -Path $regPath -ErrorAction SilentlyContinue -ErrorVariable lockedKeys | Where-Object { $_.PSChildName -match '^\{[A-F0-9]{8}-[A-F0-9]{4}-[A-F0-9]{4}-[A-F0-9]{4}-[A-F0-9]{12}\}$' }
@@ -785,21 +784,21 @@ $finalValues = @($finalValues | Select-Object -Unique)
 if ($finalValues -ne $null) {
     Write-Host
     if ($lockKey -ne $null) {
-        Write-Host "Locking IDM CLSID Registry Keys..."
+        Write-Host "inalock IDM CLSID Registry Keys..."
     }
     if ($deleteKey -ne $null) {
-        Write-Host "Deleting IDM CLSID Registry Keys..."
+        Write-Host "Inafuta IDM CLSID Registry Keys..."
     }
     Write-Host
 } else {
-    Write-Host "IDM CLSID Registry Keys are not found."
+    Write-Host "IDM CLSID Registry Keys hazipatikani."
 	Exit
 }
 
 if (($finalValues.Count -gt 20) -and ($toggle -ne $null)) {
 	$lockKey = $null
 	$deleteKey = 1
-    Write-Host "The IDM keys count is more than 20. Deleting them now instead of locking..."
+    Write-Host "key za IDM zipo zaidi ya 20. inafuta badala ya kulock..."
 	Write-Host
 }
 
